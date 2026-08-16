@@ -23,7 +23,6 @@ function handleLogin(event) {
     const password = form.elements.password.value;
 
     console.log("Identifier:", identifier);
-    console.log("Password:", password);
 
     loginUser(identifier,password)
 }

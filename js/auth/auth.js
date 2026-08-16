@@ -14,9 +14,16 @@ export async function loginUser(identifier, password) {
         throw new Error("Invalid credentials");
     }
 
-    console.log("response: ",response);
+    let token = await response.text()
+
+    console.log(token);
+    localStorage.setItem("jwt",token)
     
 
     return response;
 
+}
+
+export function getToken() {
+    return localStorage.getItem("jwt")
 }
