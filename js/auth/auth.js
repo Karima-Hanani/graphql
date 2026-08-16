@@ -1,4 +1,4 @@
-const authUrl = "https://zone01oujda.ma/api/auth/signin";
+const authUrl = "https://learn.zone01oujda.ma/api/auth/signin";
 
 export async function loginUser(identifier, password) {
     const credentials = btoa(`${identifier}:${password}`);
