@@ -7,13 +7,20 @@ export function renderLoginPage() {
         </main>
     `;
 }
-
 export function bindLoginEvents() {
     const form = document.querySelector(".login-form");
 
-    form.addEventListener("submit", (event) => {
-        event.preventDefault();
+    form.addEventListener("submit", handleLogin);
+}
 
-        // login logic later
-    });
+function handleLogin(event) {
+    event.preventDefault();
+
+    const form = event.currentTarget;
+
+    const identifier = form.elements.identifier.value;
+    const password = form.elements.password.value;
+
+    console.log("Identifier:", identifier);
+    console.log("Password:", password);
 }
