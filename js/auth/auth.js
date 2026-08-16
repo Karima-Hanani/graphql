@@ -25,5 +25,13 @@ export async function loginUser(identifier, password) {
 }
 
 export function getToken() {
-    return localStorage.getItem("jwt")
+    return localStorage.getItem("jwt");
+}
+
+export function isAuthenticated(){
+    return getToken() !== null;
+}
+
+export function logout() {
+    localStorage.removeItem("jwt");
 }

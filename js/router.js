@@ -3,7 +3,10 @@ import {
     bindLoginEvents 
 } from "./pages/loginPage.js";
 
-// import { renderProfilePage, bindProfileEvents } from "./pages/profilePage.js";
+import { 
+    renderProfilePage,
+    bindProfileEvents
+} from "./pages/profilePage.js";
 
 const app = document.querySelector("#app");
 
@@ -11,12 +14,12 @@ export const routes = {
     login: {
         render: renderLoginPage,
         bind: bindLoginEvents
-    }
+    },
 
-    // profile: {
-    //     render: renderProfilePage,
-    //     bind: bindProfileEvents
-    // }
+    profile: {
+        render: renderProfilePage,
+        bind: bindProfileEvents
+    }
 };
 
 export function showPage(page) {

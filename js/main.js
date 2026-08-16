@@ -1,3 +1,8 @@
+import { isAuthenticated } from "./auth/auth.js";
 import { showPage } from "./router.js";
 
-showPage("login");
+if (isAuthenticated()) {
+    showPage("profile")
+} else {
+    showPage("login")
+}
