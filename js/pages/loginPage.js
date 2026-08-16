@@ -1,3 +1,4 @@
+import { loginUser } from "../auth/auth.js";
 import { Login } from "../components/login.js";
 
 export function renderLoginPage() {
@@ -23,4 +24,6 @@ function handleLogin(event) {
 
     console.log("Identifier:", identifier);
     console.log("Password:", password);
+
+    loginUser(identifier,password)
 }

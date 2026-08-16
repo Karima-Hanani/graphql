@@ -1,6 +1,5 @@
 export function Login() {
     return `
-    <div class="login-page">
       <div class="login-card">
         <div class="profile-avatar">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
@@ -47,6 +46,5 @@ export function Login() {
           <button type="submit" class="submit-btn">LOGIN</button>
         </form>
       </div>
-    </div>
     `;
 }
