@@ -1,5 +1,6 @@
 import { loginUser } from "../auth/auth.js";
 import { Login } from "../components/login.js";
+import {showPage} from "../router.js";
 
 export function renderLoginPage() {
     return `
@@ -14,7 +15,7 @@ export function bindLoginEvents() {
     form.addEventListener("submit", handleLogin);
 }
 
-function handleLogin(event) {
+async function handleLogin(event) {
     event.preventDefault();
 
     const form = event.currentTarget;
@@ -24,5 +25,12 @@ function handleLogin(event) {
 
     console.log("Identifier:", identifier);
 
-    loginUser(identifier,password)
+    let res = await loginUser(identifier,password)
+    if (res.ok) {
+        showPage("profile")
+    }
+}
+
+export function showAuthError(container) {
+    container.innerHTML = "Invalid credentials";
 }

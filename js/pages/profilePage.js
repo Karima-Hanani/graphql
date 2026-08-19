@@ -1,12 +1,8 @@
 import { logout } from "../auth/auth.js";
+import { Profile } from "../components/profile.js";
 
 export function renderProfilePage() {
-    return `
-    <button class="logout-btn">logout</button>
-        <main>
-            <h1>My Profile</h1>
-        </main>
-    `;
+    return Profile()
 }
 
 export function bindProfileEvents() {

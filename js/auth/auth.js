@@ -1,3 +1,6 @@
+import { showAuthError } from "../pages/loginPage.js";
+import { showPage } from "../router.js";
+
 const authUrl = "https://learn.zone01oujda.ma/api/auth/signin";
 
 export async function loginUser(identifier, password) {
@@ -10,18 +13,22 @@ export async function loginUser(identifier, password) {
         },
     });
 
-    if (!response.ok) {
-        throw new Error("Invalid credentials");
+    if (response.status === 403) {
+        let Errcontainer = document.querySelector(".login-error")
+        showAuthError(Errcontainer)
     }
 
     let token = await response.text()
 
     console.log(token);
-    localStorage.setItem("jwt",token)
-    
+    setToken(token)
 
     return response;
 
+}
+
+export function setToken(token) {
+    return localStorage.setItem("jwt",token);
 }
 
 export function getToken() {
@@ -34,4 +41,5 @@ export function isAuthenticated(){
 
 export function logout() {
     localStorage.removeItem("jwt");
+    showPage("login")
 }
