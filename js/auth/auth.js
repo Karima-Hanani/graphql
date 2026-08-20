@@ -13,9 +13,10 @@ export async function loginUser(identifier, password) {
         },
     });
 
-    if (response.status === 403) {
+    if (response.status === 403 || response.status === 401) {
         let Errcontainer = document.querySelector(".login-error")
         showAuthError(Errcontainer)
+        return null
     }
 
     let token = await response.text()
@@ -23,7 +24,7 @@ export async function loginUser(identifier, password) {
     console.log(token);
     setToken(token)
 
-    return response;
+    return token;
 
 }
 

@@ -25,8 +25,8 @@ async function handleLogin(event) {
 
     console.log("Identifier:", identifier);
 
-    let res = await loginUser(identifier,password)
-    if (res.ok) {
+    let token = await loginUser(identifier,password)
+    if (token) {
         showPage("profile")
     }
 }
