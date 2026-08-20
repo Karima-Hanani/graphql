@@ -33,8 +33,8 @@ export function showPage(page) {
     render(route.render, route.bind);
 }
 
-export function render(renderView, bindEvents) {
-    app.innerHTML = renderView();
+export async function render(renderView, bindEvents) {
+    app.innerHTML = await renderView();
 
     if (typeof bindEvents === "function") {
         bindEvents();

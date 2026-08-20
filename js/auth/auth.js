@@ -19,9 +19,8 @@ export async function loginUser(identifier, password) {
         return null
     }
 
-    let token = await response.text()
+    let token = await (await response.text()).replace(/^"|"$/g,"")
 
-    console.log(token);
     setToken(token)
 
     return token;
