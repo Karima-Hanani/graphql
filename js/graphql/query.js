@@ -1,9 +1,9 @@
 export const query = `
     {
         user {
+            login
             firstName
             lastName
-            login
             gender: attrs(path: "gender")
             cin: attrs(path: "cin")
             city: attrs(path: "city")
