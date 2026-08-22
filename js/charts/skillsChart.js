@@ -46,7 +46,7 @@ export function SkillsChart(skills) {
                         y="${y + 12}"
                         class="skill-value"
                     >
-                        ${skill.amount}
+                        ${skill.amount}%
                     </text>
                 `;
             }).join("")}
