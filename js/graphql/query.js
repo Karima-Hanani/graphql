@@ -7,6 +7,8 @@ export const query = `
             gender: attrs(path: "gender")
             cin: attrs(path: "cin")
             city: attrs(path: "city")
+            avatar: attrs(path:"avatarUrl")
+
             auditRatio
             totalUp
             totalDown
