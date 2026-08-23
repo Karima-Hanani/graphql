@@ -12,7 +12,6 @@ export const query = `
     auditRatio
     totalUp
     totalDown
-    totalUpBonus
 
     skills: transactions(
       where: {type: {_like: "skill%"}}
@@ -23,16 +22,22 @@ export const query = `
       amount
     }
       
-    level: transactions(
-      where: {eventId: {_eq: 41}, type: {_eq: "level"}}
-      distinct_on: type
-      order_by: [{type: asc}, {amount: desc}]
-    ) {
-      type
+     level: transactions(
+      where:{
+        type:{_eq:"level"}, 
+        eventId:{_eq:41}
+      } 
+      limit:1 
+      order_by:[
+        {amount:desc}
+        {createdAt:desc}
+      ]
+    ){
       amount
     }
 
-    xp: transactions_aggregate(where:{
+    xp: transactions_aggregate(
+      where:{
       type:{_eq:"xp"} 
       eventId:{_eq:41}
     }){
