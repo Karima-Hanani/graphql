@@ -11,6 +11,8 @@ export function AuditRatioChart(user) {
     const downWidth = (totalDown / maxValue) * maxWidth;
 
     return `
+        <div class="audit-ratio">
+            <h2>Audit Ratio</h2>
             <div class="ratio-value">
                 ${ratio}
             </div>
