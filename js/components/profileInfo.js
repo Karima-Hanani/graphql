@@ -1,13 +1,17 @@
 export function profileInfo(user) {
     return `
         <section class="info">
-            <h2>About</h2>
-            <img src=${user.avatar} alt="profile">
-            <p>First Name: ${user.firstName}</p>
-            <p>Last Name: ${user.lastName}</p>
-            <p>City: ${user.city}</p>
-            <p>Gender: ${user.gender}</p>
+            <div class="info-avatar">
+                <img src="${user.avatar}" alt="${user.login}'s profile picture">
+            </div>
+            <div class="info-content">
+                <h2>${user.firstName} ${user.lastName}</h2>
+                <p class="info-location">${user.city} · ${user.gender}</p>
+                <div class="info-details">
             <p>CIN: ${user.cin}</p>
+            <p>TEL: ${user.tel}</p>
+                </div>
+            </div>
         </section>
     `;
 }

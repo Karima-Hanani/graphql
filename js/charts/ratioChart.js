@@ -51,36 +51,32 @@ export function AuditRatioChart(user) {
                     x="${100 + upWidth + 10}"
                     y="45"
                 >
-                    ${Convert(totalUp)} MB
+                    ${Convert(totalUp)}
                 </text>
 
                 <text
                     x="${100 + downWidth + 10}"
                     y="105"
                 >
-                    ${Convert(totalDown)} MB
+                    ${Convert(totalDown)}
                 </text>
             </svg>
         </div>
     `;
 }
 
-function Convert(bytes) {
-    return Math.floor(bytes / 10000) / 100
+export function Convert(bytes) {
+    if (bytes < 1000) {
+        return `${bytes} B`;
+    }
+
+    if (bytes < 1000 ** 2) {
+        return `${(bytes / 1000).toFixed(2)} KB`;
+    }
+
+    if (bytes < 1000 ** 3) {
+        return `${(bytes / 1000 ** 2).toFixed(2)} MB`;
+    }
+
+    return `${(bytes / 1000 ** 3).toFixed(2)} GB`;
 }
-
-// function Convert(bytes) {
-//     if (bytes < 1024) {
-//         return `${bytes} B`;
-//     }
-
-//     if (bytes < 1024 ** 2) {
-//         return `${(bytes / 1024).toFixed(2)} KB`;
-//     }
-
-//     if (bytes < 1024 ** 3) {
-//         return `${(bytes / 1024 ** 2).toFixed(2)} MB`;
-//     }
-
-//     return `${(bytes / 1024 ** 3).toFixed(2)} GB`;
-// }

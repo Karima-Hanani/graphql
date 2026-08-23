@@ -25,10 +25,9 @@ export function Login() {
               >
             </div>
           </div>
-
-          <p class="login-error" aria-live="polite"></p>
-
+      
           <button type="submit" class="submit-btn">LOGIN</button>
+          <p class="login-error" aria-live="polite"></p>
         </form>
       </div>
     `;

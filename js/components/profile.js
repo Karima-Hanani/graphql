@@ -1,6 +1,8 @@
 import { profileInfo } from "./profileInfo.js";
 import { SkillsChart } from "../charts/skillsChart.js";
 import { AuditRatioChart } from "../charts/ratioChart.js";
+import { level } from "./level.js";
+import { totalXP } from "./totalXP.js";
 
 export function Profile(user) {
     return `
@@ -10,12 +12,13 @@ export function Profile(user) {
     </header>
         <main class="profile">
             ${profileInfo(user)}
-             
+            ${level(user)}
+            ${totalXP(user)}
 
             <section class="statistics">
                 ${AuditRatioChart(user)}
                 ${SkillsChart(user.skills)}
-            </div>
+            </section>
         </main>
     `;
 }

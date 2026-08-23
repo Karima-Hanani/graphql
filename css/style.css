@@ -1,27 +1,22 @@
-/* ========== Variables ========== */
 :root {
-  --rose-50:  #fff5f7;
-  --rose-100: #ffe4ec;
-  --rose-200: #ffc2d4;
-  --rose-300: #ff9ebb;
-  --rose-400: #ff7aa3;
-  --rose-500: #f25c8a;
-  --rose-600: #d63d6e;
-  
-  --purple-soft: #c4b5fd;
-  --purple-light: #e9e0ff;
-  
-  --text-dark: #4a3040;
-  --text-muted: #8b6b7a;
+  --sky-50: #f0f9ff;
+  --sky-100: #dff3ff;
+  --sky-200: #bae6fd;
+  --sky-300: #7dd3fc;
+  --sky-400: #38bdf8;
+  --sky-500: #0ea5e9;
+  --sky-600: #0079db;
+  --navy: #12304a;
+  --text-muted: #5e7890;
   --white: #ffffff;
-  --shadow: 0 8px 30px rgba(242, 92, 138, 0.12);
-  --shadow-hover: 0 12px 40px rgba(242, 92, 138, 0.18);
-  --radius: 20px;
-  --radius-sm: 12px;
+  --shadow: 0 12px 32px rgba(14, 165, 233, 0.13);
+  --radius: 16px;
+  --radius-sm: 10px;
   --transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1); 
+  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-/* ========== Base ========== */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -30,33 +25,39 @@
 
 body {
   font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
-  background: linear-gradient(160deg, var(--rose-50) 0%, #fdf2f8 40%, var(--purple-light) 100%);
-  color: var(--text-dark);
+  background: linear-gradient(160deg, var(--sky-50) 0%, #f8fcff 48%, #d9f2ff 100%);
+  color: var(--navy);
   min-height: 100vh;
   line-height: 1.5;
 }
 
-/* ========== Login ========== */
+button,
+input {
+  font: inherit;
+}
+
 .login-card {
-  max-width: 400px;
-  margin: 10vh auto;
-  padding: 2.5rem 2rem;
+  width: min(100%, 420px);
+  margin: 0 auto;
+  padding: clamp(2rem, 6vw, 3.25rem);
   background: var(--white);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
-  border: 1px solid var(--rose-100);
+  border: 1px solid var(--sky-200);
   transition: var(--transition);
 }
 
-.login-card:hover {
-  box-shadow: var(--shadow-hover);
-  transform: translateY(-4px);
+.login-page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 1.25rem;
 }
 
 .login-form {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 1rem;
 }
 
 .form-group {
@@ -65,12 +66,13 @@ body {
 
 .input-wrapper input {
   width: 100%;
-  padding: 0.95rem 1.2rem;
-  border: 2px solid var(--rose-100);
+  min-height: 3rem;
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--sky-200);
   border-radius: var(--radius-sm);
   font-size: 0.95rem;
-  color: var(--text-dark);
-  background: var(--rose-50);
+  color: var(--navy);
+  background: var(--sky-50);
   outline: none;
   transition: var(--transition);
 }
@@ -82,13 +84,13 @@ body {
 }
 
 .input-wrapper input:focus {
-  border-color: var(--rose-400);
+  border-color: var(--sky-500);
   background: var(--white);
-  box-shadow: 0 0 0 4px rgba(242, 92, 138, 0.15);
+  box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.15);
 }
 
 .login-error {
-  color: var(--rose-600);
+  color: #c0395b;
   font-size: 0.875rem;
   min-height: 1.25rem;
   text-align: center;
@@ -96,38 +98,37 @@ body {
 
 .submit-btn {
   margin-top: 0.5rem;
-  padding: 1rem;
+  min-height: 3rem;
+  padding: 0.8rem 1rem;
   border: none;
   border-radius: var(--radius-sm);
-  background: linear-gradient(135deg, var(--rose-400), var(--rose-500));
+  background: linear-gradient(135deg, var(--sky-500), var(--sky-600));
   color: white;
   font-weight: 600;
   font-size: 1rem;
   letter-spacing: 1px;
   cursor: pointer;
   transition: var(--transition);
-  box-shadow: 0 4px 15px rgba(242, 92, 138, 0.35);
+  box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3);
 }
 
 .submit-btn:hover {
-  background: linear-gradient(135deg, var(--rose-500), var(--rose-600));
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(242, 92, 138, 0.4);
+  background: linear-gradient(135deg, var(--sky-600), #0369a1);
+  box-shadow: 0 8px 25px rgba(14, 165, 233, 0.35);
 }
 
 .submit-btn:active {
   transform: translateY(0);
 }
 
-/* ========== Profile Header ========== */
 .profile-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.25rem 2rem;
+  padding: 1rem clamp(1rem, 4vw, 2.5rem);
   background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--rose-100);
+  border-bottom: 1px solid var(--sky-200);
   position: sticky;
   top: 0;
   z-index: 10;
@@ -135,153 +136,304 @@ body {
 
 .profile-header p {
   font-weight: 600;
-  color: var(--rose-500);
+  color: var(--sky-600);
   font-size: 1.1rem;
 }
 
 .logout-btn {
-  padding: 0.55rem 1.3rem;
-  border: 2px solid var(--rose-200);
+  min-height: 2.5rem;
+  padding: 0.45rem 1rem;
+  border: 1px solid var(--sky-300);
   border-radius: 999px;
   background: transparent;
-  color: var(--rose-600);
+  color: var(--sky-600);
   font-weight: 500;
   cursor: pointer;
   transition: var(--transition);
 }
 
 .logout-btn:hover {
-  background: var(--rose-100);
-  border-color: var(--rose-400);
-  color: var(--rose-600);
+  background: var(--sky-100);
+  border-color: var(--sky-500);
+  color: #0369a1;
 }
 
-/* ========== Profile Layout ========== */
 .profile {
-  max-width: 900px;
+  width: min(100%, 980px);
   margin: 2rem auto;
-  padding: 0 1.5rem 3rem;
+  padding: 0 clamp(1rem, 4vw, 2rem) 3rem;
   display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1.75rem;
 }
 
-/* Cards shared style */
+.statistics {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: 1.75rem;
+  min-width: 0;
+}
+
 .info,
+.profile-level,
+.profile-xp,
 .audit-ratio,
 .skills {
   background: var(--white);
   border-radius: var(--radius);
   padding: 1.75rem 2rem;
   box-shadow: var(--shadow);
-  border: 1px solid var(--rose-100);
+  border: 1px solid var(--sky-200);
   transition: var(--transition);
 }
 
-.info:hover,
-.audit-ratio:hover,
-.skills:hover {
-  box-shadow: var(--shadow-hover);
-  transform: translateY(-3px);
+.profile-level,
+.profile-xp {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.info {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: clamp(150px, 20vw, 210px) minmax(0, 1fr);
+  gap: 0 clamp(1.5rem, 5vw, 3.5rem);
+  align-items: center;
+  min-width: 0;
+}
+
+.info-avatar {
+  grid-row: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.info-avatar img {
+  width: clamp(130px, 18vw, 190px);
+  aspect-ratio: 1;
+  object-fit: cover;
+  border: 6px solid var(--sky-100);
+  border-radius: 50%;
+  box-shadow: 0 10px 24px rgba(14, 165, 233, 0.2);
+}
+
+.info-content {
+  min-width: 0;
+}
+
+.info h2 {
+  margin-bottom: 0.25rem;
+  color: var(--navy);
+  font-size: clamp(1.5rem, 3vw, 2.1rem);
+  line-height: 1.15;
+}
+
+.info-location {
+  margin-bottom: 1.1rem !important;
+  color: var(--text-muted) !important;
+}
+
+.info-details {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.6rem 1.5rem;
 }
 
 .info h2,
+.profile-level h2,
+.profile-xp h2,
 .audit-ratio h2,
 .skills h2 {
   font-size: 1.25rem;
-  color: var(--rose-500);
+  color: var(--sky-600);
   margin-bottom: 1.25rem;
   font-weight: 600;
   letter-spacing: 0.3px;
 }
 
-.info p {
+.info p,
+.profile-level p,
+.profile-xp p {
   margin-bottom: 0.6rem;
-  color: var(--text-dark);
+  color: var(--navy);
   font-size: 0.95rem;
 }
 
-.info p:last-child {
+.info-details p {
+  margin-bottom: 0;
+  overflow-wrap: anywhere;
+}
+
+.info p:last-child,
+.profile-level p:last-child,
+.profile-xp p:last-child {
   margin-bottom: 0;
 }
 
-/* Audit Ratio */
-.audit-ratio p {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: var(--rose-500);
-  text-align: center;
-  background: linear-gradient(135deg, var(--rose-400), var(--purple-soft));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+.profile-level p,
+.profile-xp p {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--sky-500);
 }
 
-/* ========== Skills Chart (SVG) ========== */
+.audit-ratio {
+  overflow-x: auto;
+}
+
+.ratio-value {
+  margin: 0.25rem 0 1rem;
+  font-size: clamp(2.5rem, 8vw, 4rem);
+  line-height: 1;
+  font-weight: 300;
+  color: var(--sky-500);
+  letter-spacing: 0;
+  animation: fadeSlideIn 0.6s var(--ease-smooth) both;
+}
+
+.audit-chart {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  display: block;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+.audit-chart text {
+  fill: var(--navy);
+  font-size: 13px;
+}
+
+.audit-chart rect {
+  height: 6px;
+  rx: 3;
+  ry: 3;
+  opacity: 0;
+  transition: width 0.8s var(--ease-smooth);
+  animation: fadeIn 0.5s var(--ease-smooth) both;
+}
+
+.audit-up {
+  fill: var(--sky-500);
+  transition: fill 0.3s ease, filter 0.3s ease, width 0.8s var(--ease-smooth);
+}
+
+.audit-down {
+  fill: var(--sky-300);
+  transition: fill 0.3s ease, filter 0.3s ease, width 0.8s var(--ease-smooth);
+}
+
 .skills {
-  overflow: hidden;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
 }
 
 .skills-chart {
   width: 100%;
+  max-width: 600px;
   height: auto;
-  max-width: 100%;
   display: block;
 }
 
-/* SVG elements */
 .skill-name {
   font-size: 13px;
   font-weight: 500;
-  fill: var(--text-dark);
+  fill: var(--navy);
   font-family: inherit;
+  opacity: 0;
+  animation: fadeSlideIn 0.5s var(--ease-smooth) both;
 }
 
 .skill-bar-background {
-  fill: var(--rose-100);
+  fill: var(--sky-100);
   rx: 8;
   ry: 8;
 }
 
 .skill-bar {
-  fill: url(#barGradient); /* optional gradient – see note below */
-  fill: var(--rose-400);
+  fill: var(--sky-400);
   rx: 8;
   ry: 8;
-  transition: width 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+  opacity: 0;
+  transition: width 0.8s var(--ease-bounce), fill 0.3s ease, filter 0.3s ease;
+  animation: fadeIn 0.5s var(--ease-smooth) both;
 }
 
 .skill-value {
   font-size: 13px;
   font-weight: 600;
-  fill: var(--rose-500);
+  fill: var(--sky-600);
   font-family: inherit;
+  opacity: 0;
+  animation: fadeSlideIn 0.5s var(--ease-smooth) both;
 }
 
-/* Hover effect on bars (works if you keep the rects interactive) */
-.skills-chart:hover .skill-bar {
-  filter: brightness(1.08);
-}
-
-/* ========== Responsive ========== */
-@media (max-width: 640px) {
-  .login-card {
-    margin: 5vh 1rem;
-    padding: 2rem 1.5rem;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
   }
+  to {
+    opacity: 1;
+  }
+}
 
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 640px) {
   .profile-header {
-    padding: 1rem 1.25rem;
+    padding: 0.85rem 1rem;
   }
 
   .profile {
+    grid-template-columns: 1fr;
     margin-top: 1.25rem;
-    padding: 0 1rem 2rem;
+    padding: 0 0.75rem 2rem;
+  }
+
+  .statistics {
+    grid-template-columns: 1fr;
   }
 
   .info,
+  .profile-level,
+  .profile-xp,
   .audit-ratio,
   .skills {
-    padding: 1.4rem 1.25rem;
+    padding: 1.25rem 1rem;
+  }
+
+  .info {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 1rem;
+  }
+
+  .info-avatar {
+    grid-row: auto;
+  }
+
+  .info-avatar img {
+    width: min(48vw, 170px);
+  }
+
+  .info-details {
+    text-align: left;
+  }
+
+  .profile-level p,
+  .profile-xp p {
+    font-size: 1.25rem;
   }
 
   .audit-ratio p {
@@ -297,9 +449,12 @@ body {
   }
 }
 
-/* Optional: very small screens – make labels smaller */
 @media (max-width: 400px) {
-  .skills-chart {
-    /* viewBox already handles scaling, just ensure text stays readable */
+  .profile-header p {
+    font-size: 0.95rem;
+  }
+
+  .logout-btn {
+    padding-inline: 0.75rem;
   }
 }
