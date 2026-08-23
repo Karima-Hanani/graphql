@@ -9,6 +9,7 @@ export function profileInfo(user) {
                 <p class="info-location">${user.city} · ${user.gender}</p>
                 <div class="info-details">
             <p>CIN: ${user.cin}</p>
+            <p>EMAIL: ${user.email}</p>
             <p>TEL: ${user.tel}</p>
                 </div>
             </div>

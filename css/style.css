@@ -13,7 +13,7 @@
   --radius: 16px;
   --radius-sm: 10px;
   --transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-  --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1); 
+  --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
@@ -36,6 +36,7 @@ input {
   font: inherit;
 }
 
+/* ========== Login ========== */
 .login-card {
   width: min(100%, 420px);
   margin: 0 auto;
@@ -121,6 +122,7 @@ input {
   transform: translateY(0);
 }
 
+/* ========== Profile Header ========== */
 .profile-header {
   display: flex;
   justify-content: space-between;
@@ -158,23 +160,25 @@ input {
   color: #0369a1;
 }
 
+/* ========== Profile Layout ========== */
 .profile {
   width: min(100%, 980px);
   margin: 2rem auto;
   padding: 0 clamp(1rem, 4vw, 2rem) 3rem;
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: 1fr;
   gap: 1.75rem;
 }
 
 .statistics {
   grid-column: 1 / -1;
-  display: grid;
-  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  display: flex;
+  flex-direction: column;
   gap: 1.75rem;
   min-width: 0;
 }
 
+/* Shared card */
 .info,
 .profile-level,
 .profile-xp,
@@ -188,15 +192,46 @@ input {
   transition: var(--transition);
 }
 
+/* ========== Level & XP (centered) ========== */
 .profile-level,
 .profile-xp {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   gap: 0.4rem;
 }
+.info h2 {
+  font-size: 1.25rem;
+  color: var(--sky-600);
+  margin-bottom: 1.25rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
 
+.profile-level h2,
+.profile-xp h2,
+.audit-ratio h2,
+.skills h2 {
+  font-size: 1.25rem;
+  color: var(--sky-600);
+  margin-bottom: 1.25rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  text-align: center;
+}
+
+.profile-level p,
+.profile-xp p {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--sky-500);
+  margin-bottom: 0;
+}
+
+/* ========== Info section ========== */
 .info {
-  grid-column: 1 / -1;
   display: grid;
   grid-template-columns: clamp(150px, 20vw, 210px) minmax(0, 1fr);
   gap: 0 clamp(1.5rem, 5vw, 3.5rem);
@@ -205,7 +240,6 @@ input {
 }
 
 .info-avatar {
-  grid-row: 1;
   display: flex;
   justify-content: center;
 }
@@ -223,127 +257,127 @@ input {
   min-width: 0;
 }
 
-.info h2 {
-  margin-bottom: 0.25rem;
-  color: var(--navy);
-  font-size: clamp(1.5rem, 3vw, 2.1rem);
-  line-height: 1.15;
-}
+
 
 .info-location {
-  margin-bottom: 1.1rem !important;
+  margin-bottom: 1.4rem !important;
   color: var(--text-muted) !important;
-}
-
-.info-details {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.6rem 1.5rem;
-}
-
-.info h2,
-.profile-level h2,
-.profile-xp h2,
-.audit-ratio h2,
-.skills h2 {
-  font-size: 1.25rem;
-  color: var(--sky-600);
-  margin-bottom: 1.25rem;
-  font-weight: 600;
-  letter-spacing: 0.3px;
-}
-
-.info p,
-.profile-level p,
-.profile-xp p {
-  margin-bottom: 0.6rem;
-  color: var(--navy);
   font-size: 0.95rem;
 }
 
+/* ========== NEW cleaner info-details ========== */
+.info-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
 .info-details p {
-  margin-bottom: 0;
-  overflow-wrap: anywhere;
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0.65rem 1rem;
+  background: var(--sky-50);
+  border-radius: 10px;
+  border: 1px solid var(--sky-100);
+  font-size: 0.95rem;
+  color: var(--navy);
+  transition: var(--transition);
 }
 
-.info p:last-child,
-.profile-level p:last-child,
-.profile-xp p:last-child {
-  margin-bottom: 0;
+.info-details p:hover {
+  background: var(--sky-100);
+  border-color: var(--sky-200);
 }
 
-.profile-level p,
-.profile-xp p {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: var(--sky-500);
-}
-
+/* ========== Audit Ratio ========== */
 .audit-ratio {
-  overflow-x: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 0;
+  overflow: hidden;
 }
 
 .ratio-value {
-  margin: 0.25rem 0 1rem;
-  font-size: clamp(2.5rem, 8vw, 4rem);
-  line-height: 1;
-  font-weight: 300;
-  color: var(--sky-500);
+  fill: var(--navy);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 2rem;
+  font-weight: 700;
   letter-spacing: 0;
   animation: fadeSlideIn 0.6s var(--ease-smooth) both;
 }
 
 .audit-chart {
-  width: 100%;
-  max-width: 500px;
+  width: min(100%, 280px);
   height: auto;
   display: block;
+  margin: 0.25rem auto 0.75rem;
+}
+
+.ratio-ring {
+  fill: none;
+  stroke-width: 24;
+}
+
+.ratio-ring-background {
+  stroke: var(--sky-100);
+}
+
+.ratio-ring-up {
+  stroke: var(--sky-500);
+  animation: ratioRingIn 0.9s var(--ease-smooth) both;
+}
+
+.ratio-ring-down {
+  stroke: var(--sky-300);
+  animation: ratioRingIn 0.9s 0.12s var(--ease-smooth) both;
+}
+
+.audit-values {
+  width: min(100%, 280px);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--sky-100);
+  color: var(--navy);
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.78rem;
 }
 
-.audit-chart text {
-  fill: var(--navy);
-  font-size: 13px;
+.audit-values span {
+  min-width: 0;
+  padding: 0.65rem 0.5rem;
+  border-radius: var(--radius-sm);
+  background: var(--sky-50);
+  overflow-wrap: anywhere;
 }
 
-.audit-chart rect {
-  height: 6px;
-  rx: 3;
-  ry: 3;
-  opacity: 0;
-  transition: width 0.8s var(--ease-smooth);
-  animation: fadeIn 0.5s var(--ease-smooth) both;
+.audit-values span:first-child {
+  color: var(--sky-600);
 }
 
-.audit-up {
-  fill: var(--sky-500);
-  transition: fill 0.3s ease, filter 0.3s ease, width 0.8s var(--ease-smooth);
+.audit-values span:last-child {
+  color: var(--text-muted);
 }
 
-.audit-down {
-  fill: var(--sky-300);
-  transition: fill 0.3s ease, filter 0.3s ease, width 0.8s var(--ease-smooth);
-}
-
+/* ========== SKILLS – Horizontal Bar Chart style ========== */
 .skills {
+  text-align: center;
   overflow-x: auto;
   overscroll-behavior-inline: contain;
+  background: var(--white);
+  border: 1px solid var(--sky-200);
 }
 
 .skills-chart {
   width: 100%;
-  max-width: 600px;
+  max-width: 620px;
   height: auto;
   display: block;
-}
-
-.skill-name {
-  font-size: 13px;
-  font-weight: 500;
-  fill: var(--navy);
-  font-family: inherit;
-  opacity: 0;
-  animation: fadeSlideIn 0.5s var(--ease-smooth) both;
+  margin: 0 auto;
 }
 
 .skill-bar-background {
@@ -353,15 +387,18 @@ input {
 }
 
 .skill-bar {
+
   fill: var(--sky-400);
   rx: 8;
   ry: 8;
   opacity: 0;
-  transition: width 0.8s var(--ease-bounce), fill 0.3s ease, filter 0.3s ease;
+  transition: width 0.85s var(--ease-bounce), filter 0.3s ease;
   animation: fadeIn 0.5s var(--ease-smooth) both;
+  filter: drop-shadow(0 2px 6px rgba(56, 189, 248, 0.3));
 }
 
-.skill-value {
+.skill-value,
+.skill-name {
   font-size: 13px;
   font-weight: 600;
   fill: var(--sky-600);
@@ -371,18 +408,14 @@ input {
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
 @keyframes fadeSlideIn {
   from {
     opacity: 0;
-    transform: translateY(4px);
+    transform: translateY(6px);
   }
   to {
     opacity: 1;
@@ -390,19 +423,24 @@ input {
   }
 }
 
+@keyframes ratioRingIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ========== Responsive ========== */
 @media (max-width: 640px) {
   .profile-header {
     padding: 0.85rem 1rem;
   }
 
   .profile {
-    grid-template-columns: 1fr;
     margin-top: 1.25rem;
     padding: 0 0.75rem 2rem;
-  }
-
-  .statistics {
-    grid-template-columns: 1fr;
   }
 
   .info,
@@ -416,11 +454,7 @@ input {
   .info {
     grid-template-columns: 1fr;
     text-align: center;
-    gap: 1rem;
-  }
-
-  .info-avatar {
-    grid-row: auto;
+    gap: 1.25rem;
   }
 
   .info-avatar img {
@@ -431,19 +465,16 @@ input {
     text-align: left;
   }
 
+  .info-details p {
+    padding: 0.55rem 0.85rem;
+  }
+
   .profile-level p,
   .profile-xp p {
     font-size: 1.25rem;
   }
 
-  .audit-ratio p {
-    font-size: 2rem;
-  }
-
-  .skill-name {
-    font-size: 12px;
-  }
-
+  .skill-name,
   .skill-value {
     font-size: 12px;
   }

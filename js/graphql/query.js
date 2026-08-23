@@ -4,6 +4,7 @@ export const query = `
     login
     firstName
     lastName
+    email
     gender: attrs(path: "gender")
     cin: attrs(path: "cin")
     city: attrs(path: "city")

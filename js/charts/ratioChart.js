@@ -1,66 +1,70 @@
 export function AuditRatioChart(user) {
-    const maxWidth = 300;
-
-    const totalUp = (user.totalUp);
+    const totalUp = user.totalUp;
     const totalDown = user.totalDown;
-    const ratio = user.auditRatio?.toFixed(1)
+    const ratio = user.auditRatio?.toFixed(1);
 
-    const maxValue = Math.max(totalUp, totalDown);
+    const total = totalUp + totalDown;
 
-    const upWidth = (totalUp / maxValue) * maxWidth;
-    const downWidth = (totalDown / maxValue) * maxWidth;
+    const upPercent = totalUp / total;
+    const downPercent = totalDown / total;
+
+    const radius = 70;
+    const circumference = 2 * Math.PI * radius;
+
+    const upLength = upPercent * circumference;
+    const downLength = downPercent * circumference;
 
     return `
         <div class="audit-ratio">
             <h2>Audit Ratio</h2>
-            <div class="ratio-value">
-                ${ratio}
-            </div>
 
             <svg
                 class="audit-chart"
-                viewBox="0 0 500 180"
+                viewBox="0 0 200 200"
                 role="img"
                 aria-label="Audit ratio chart"
             >
-                <text x="10" y="45">
-                    Given
-                </text>
-
-                <rect
-                    x="100"
-                    y="25"
-                    width="${upWidth}"
-                    height="30"
-                    class="audit-up"
+                <circle
+                    cx="100"
+                    cy="100"
+                    r="${radius}"
+                    class="ratio-ring ratio-ring-background"
                 />
 
-                <text x="10" y="105">
-                    Received
-                </text>
+                <circle
+                    cx="100"
+                    cy="100"
+                    r="${radius}"
+                    class="ratio-ring ratio-ring-up"
+                    stroke-dasharray="${upLength} ${circumference}"
+                    transform="rotate(-90 100 100)"
+                />
 
-                <rect
-                    x="100"
-                    y="85"
-                    width="${downWidth}"
-                    height="30"
-                    class="audit-down"
+                <circle
+                    cx="100"
+                    cy="100"
+                    r="${radius}"
+                    class="ratio-ring ratio-ring-down"
+                    stroke-dasharray="${downLength} ${circumference}"
+                    stroke-dashoffset="-${upLength}"
+                    transform="rotate(-90 100 100)"
                 />
 
                 <text
-                    x="${100 + upWidth + 10}"
-                    y="45"
+                    x="100"
+                    y="100"
+                    text-anchor="middle"
+                    dominant-baseline="middle"
+                    class="ratio-value"
                 >
-                    ${Convert(totalUp)}
-                </text>
-
-                <text
-                    x="${100 + downWidth + 10}"
-                    y="105"
-                >
-                    ${Convert(totalDown)}
+                    ${ratio}
                 </text>
             </svg>
+
+            <div class="audit-values">
+                <span>UP: ${Convert(totalUp)}↑</span>
+                <span>DOWN: ${Convert(totalDown)}↓</span>
+            </div>
         </div>
     `;
 }
