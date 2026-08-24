@@ -8,6 +8,8 @@ import {
     bindProfileEvents
 } from "./pages/profilePage.js";
 
+import { logout } from "./auth/auth.js";
+
 const app = document.querySelector("#app");
 
 export const routes = {
@@ -34,7 +36,14 @@ export function showPage(page) {
 }
 
 export async function render(renderView, bindEvents) {
-    app.innerHTML = await renderView();
+    const content = await renderView();
+
+    if (content === null) {
+        logout();
+        return;
+    }
+
+    app.innerHTML = content;
 
     if (typeof bindEvents === "function") {
         bindEvents();

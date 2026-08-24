@@ -21,6 +21,9 @@ export async function graphqlRequest(query) {
     }
 
     const data = await response.json();
-
+    if (data.errors) {
+        throw new Error(data.errors[0].message);
+    }
+    
     return data;
 }

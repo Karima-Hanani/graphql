@@ -4,17 +4,23 @@ import {graphqlRequest} from "../graphql/graphql.js";
 import {query} from "../graphql/query.js"
 
 export async function renderProfilePage() {
-    const graphRes = await graphqlRequest(query);
+    try {
+        const graphRes = await graphqlRequest(query);
 
-    const user = graphRes.data.user[0];
+        const user = graphRes.data.user[0];
 
-    console.log("USER:", user);
+        return Profile(user);
 
-    return Profile(user);
+    } catch (error) {
+        console.error("Failed to load profile:", error);
+        return null;
+    }
 }
 
 export function bindProfileEvents() {
     const logoutBtn = document.querySelector(".logout-btn")
 
-    logoutBtn.addEventListener("click",logout)
+    if (logoutBtn) {
+        logoutBtn.addEventListener("click", logout);
+    }
 }
