@@ -1,5 +1,5 @@
 export function SkillsChart(skills) {
-    const maxWidth = 300;
+    const maxWidth = 450;
     const barHeight = 15;
     const rowHeight = 20;
     const startX = 100;

@@ -301,7 +301,7 @@ input {
 }
 
 .ratio-value {
-  fill: var(--navy);
+  fill: var(--sky-600);
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   font-size: 2rem;
   font-weight: 700;
@@ -322,17 +322,12 @@ input {
 }
 
 .ratio-ring-background {
-  stroke: var(--sky-100);
+  stroke: var(--sky-300);
 }
 
 .ratio-ring-up {
   stroke: var(--sky-500);
   animation: ratioRingIn 0.9s var(--ease-smooth) both;
-}
-
-.ratio-ring-down {
-  stroke: var(--sky-300);
-  animation: ratioRingIn 0.9s 0.12s var(--ease-smooth) both;
 }
 
 .audit-values {

@@ -6,13 +6,11 @@ export function AuditRatioChart(user) {
     const total = totalUp + totalDown;
 
     const upPercent = totalUp / total;
-    const downPercent = totalDown / total;
 
     const radius = 70;
     const circumference = 2 * Math.PI * radius;
 
     const upLength = upPercent * circumference;
-    const downLength = downPercent * circumference;
 
     return `
         <div class="audit-ratio">
@@ -21,8 +19,6 @@ export function AuditRatioChart(user) {
             <svg
                 class="audit-chart"
                 viewBox="0 0 200 200"
-                role="img"
-                aria-label="Audit ratio chart"
             >
                 <circle
                     cx="100"
@@ -37,16 +33,6 @@ export function AuditRatioChart(user) {
                     r="${radius}"
                     class="ratio-ring ratio-ring-up"
                     stroke-dasharray="${upLength} ${circumference}"
-                    transform="rotate(-90 100 100)"
-                />
-
-                <circle
-                    cx="100"
-                    cy="100"
-                    r="${radius}"
-                    class="ratio-ring ratio-ring-down"
-                    stroke-dasharray="${downLength} ${circumference}"
-                    stroke-dashoffset="-${upLength}"
                     transform="rotate(-90 100 100)"
                 />
 
