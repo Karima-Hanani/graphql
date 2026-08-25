@@ -4,9 +4,9 @@ export function profileInfo(user) {
         avatar = user.avatar
     } else {
         if (user.gender === "Female") {
-            avatar = "./assest/l.jpeg"
+            avatar = "./assest/female.jpg"
         } else {
-            avatar = "./assest/male.jpg"
+            avatar = "./assest/l.jpeg"
         }
     }
         
