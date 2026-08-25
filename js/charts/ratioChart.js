@@ -1,7 +1,7 @@
 export function AuditRatioChart(user) {
     const totalUp = user.totalUp;
     const totalDown = user.totalDown;
-    const ratio = user.auditRatio?.toFixed(1);
+    const ratio = user.auditRatio?.toFixed(1) ?? 0;
 
     const total = totalUp + totalDown;
 
