@@ -56,6 +56,7 @@ export function AuditRatioChart(user) {
 }
 
 export function Convert(bytes) {
+    if (!bytes) return `0 B`
     if (bytes < 1000) {
         return `${bytes} B`;
     }
