@@ -23,8 +23,6 @@ async function handleLogin(event) {
     const identifier = form.elements.identifier.value;
     const password = form.elements.password.value;
 
-    console.log("Identifier:", identifier);
-
     let token = await loginUser(identifier,password)
     if (token) {
         showPage("profile")
