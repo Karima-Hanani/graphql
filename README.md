@@ -149,33 +149,11 @@ distinct_on: type
 ---
 
 ## 🚀 Getting Started
+### 1. open
 
-### 1. Clone the repository
+[myGraphQL](https://zone-graphql.netlify.app/)
 
-```bash
-git clone <repository-url>
-cd graphql-profile
-```
-
-### 2. Start the project
-
-If the project is a static frontend, it can be served using a local HTTP server.
-
-For example:
-
-```bash
-python3 -m http.server 8000
-```
-
-Then open:
-
-```text
-http://localhost:8000
-```
-
-You can also use another local development server such as VS Code Live Server.
-
-### 3. Log in
+### 2. Log in
 
 Enter your platform credentials on the login page.
 
